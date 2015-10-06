@@ -35,9 +35,6 @@ var HTML = "<style> \
 <xmp id='log'></xmp>            \
 <script>            \
 var ws = new WebSocket('ws://localhost:1234', 'echo-protocol');           \
-function sendMessage(message){            \
-    ws.send(message);           \
-}           \
 ws.addEventListener(\"message\", function(e) {            \
     var msg = e.data;           \
     var $log = document.getElementById('log');            \
