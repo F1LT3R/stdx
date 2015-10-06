@@ -22,37 +22,27 @@ function EXEC (cmd) {
 }
 
 
-var HTML = " \n \
- \n \
-<style> \n \
-*{ \n \
-    background: #000; \n \
-    font-family: 'ProggyCleanTTSZ'; \n \
-    color: #AAA; \n \
-    -webkit-font-smoothing: none; \n \
-    font-size: 15px; \n \
-  } \n \
-</style> \n \
-<h1>Exec for fun</h1> \n \
- \n \
-<xmp id='log'></xmp> \n \
- \n \
-<script> \n \
-var ws = new WebSocket('ws://localhost:1234', 'echo-protocol'); \n \
- \n \
-function sendMessage(message){ \n \
-    ws.send(message); \n \
-} \n \
- \n \
- \n \
-ws.addEventListener(\"message\", function(e) { \n \
-    var msg = e.data; \n \
-    var $log = document.getElementById('log'); \n \
-    log.innerHTML = msg + '\\n' + log.innerHTML; \n \
-});</script> \n \
-\n \
-\n \
- ";
+var HTML = "<style> \
+*{            \
+    background: #000;           \
+    font-family: 'ProggyCleanTTSZ';           \
+    color: #AAA;            \
+    -webkit-font-smoothing: none;           \
+    font-size: 15px;            \
+  }           \
+</style>            \
+<input id='input' onchange='ws.send(this.value);this.value=\"\"'>            \
+<xmp id='log'></xmp>            \
+<script>            \
+var ws = new WebSocket('ws://localhost:1234', 'echo-protocol');           \
+function sendMessage(message){            \
+    ws.send(message);           \
+}           \
+ws.addEventListener(\"message\", function(e) {            \
+    var msg = e.data;           \
+    var $log = document.getElementById('log');            \
+    log.innerHTML = msg + '\\n' + log.innerHTML;            \
+});</script>";
 
 
 
